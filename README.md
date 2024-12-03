@@ -1,4 +1,4 @@
-# InfoStealer
+# StealNSend
 StealNSend is a PoC program designed to extract credentials from various web browser and software and send them to a FTP server. As of 3 December 2024, this program is undetectable by common antivirus software.
 
 *This code is designed for Windows environments due to the use of platform-specific paths and environment variables.*

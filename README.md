@@ -24,6 +24,11 @@ ftpPort := <PORT>
 ftpUser := "<USERNAME>"
 ftpPassword := "<PASSWORD>"
 ```
+- **Inizialize Go module** -
+```
+go mod init <PROJECT_NAME>
+go mod tidy
+```
 - **Build the Program** - `GOOS=windows GOARCH=amd64 go build -o <OUTPUT_NAME> main.go utility.go`
 
 ## Disclaimer

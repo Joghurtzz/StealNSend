@@ -29,7 +29,7 @@ ftpPassword := "<PASSWORD>"
 go mod init <PROJECT_NAME>
 go mod tidy
 ```
-- **Build the Program** - `GOOS=windows GOARCH=amd64 go build -o <OUTPUT_NAME> main.go utility.go`
+- **Build the Program** - `GOOS=windows GOARCH=amd64 go build -o <OUTPUT_NAME>.exe main.go utility.go`
 
 ## Disclaimer
 This program is intended strictly for educational and research purposes. Any use of StealNSend for unauthorized access, malicious activities, or data theft is strictly prohibited. The author assumes **no** responsability for misuse of this program.

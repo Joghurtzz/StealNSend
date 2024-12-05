@@ -1,10 +1,10 @@
 # StealNSend
-StealNSend is a PoC program designed to extract credentials from various web browser and software and send them to a FTP server. As of 3 December 2024, this program is undetectable by common antivirus software.
+StealNSend is a PoC program designed to extract credentials from various web browser and software, take screenshot and send them to a FTP server. As of 3 December 2024, this program is undetectable by common antivirus software.
 
 *This code is designed for Windows environments due to the use of platform-specific paths and environment variables.*
 
 ## Description
-This program allows you to identify and upload files from specific directories to a remote FTP server. It is designed to automate data transfer from predefined locations, such as browser data or application configurations, using secure FTP connections.
+This program allows you to identify and upload files from specific directories and a screenshot to a remote FTP server. It is designed to automate data transfer from predefined locations, such as browser data or application configurations, using secure FTP connections.
 
 ### Key Features
 - **Recursive Directory Scanning** - Identifies and collects all files within specified directories while ignoring subdirectories
@@ -13,7 +13,11 @@ This program allows you to identify and upload files from specific directories t
 
 ## Requirements
 - **Go** - Version 1.18+
-- **Dependencies** - `github.com/jlaffaye/ftp`
+- **Dependencies**
+```
+github.com/jlaffaye/ftp
+github.com/kbinani/screenshot
+```
 
 ## How To Use
 - **Clone the Repository** - `git clone https://github.com/Joghurtzz`

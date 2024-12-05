@@ -2,10 +2,42 @@ package main
 
 import (
 	"fmt"
+	"image/png"
 	"os"
 
 	"github.com/jlaffaye/ftp"
+	"github.com/kbinani/screenshot"
 )
+
+// Take screenshot of the first monitor, then save in .png file
+func CaptureScreenshot(outputFilePath string) error {
+	// Number of monitor
+	n := screenshot.NumActiveDisplays()
+	if n == 0 {
+		return fmt.Errorf("no active displays found")
+	}
+
+	// Take screenshot of the first monitor (can be changed for more monitor)
+	bounds := screenshot.GetDisplayBounds(0)
+	img, err := screenshot.CaptureRect(bounds)
+	if err != nil {
+		return fmt.Errorf("failed to capture screenshot: %v", err)
+	}
+
+	// Save image
+	file, err := os.Create(outputFilePath)
+	if err != nil {
+		return fmt.Errorf("failed to create screenshot file: %v", err)
+	}
+	defer file.Close()
+
+	err = png.Encode(file, img)
+	if err != nil {
+		return fmt.Errorf("failed to encode screenshot to PNG: %v", err)
+	}
+
+	return nil
+}
 
 // Load file on FTP server
 func UploadFileToFTP(ftpClient *ftp.ServerConn, localFilePath, remotePath string) error {

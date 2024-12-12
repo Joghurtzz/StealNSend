@@ -45,5 +45,3 @@ go mod tidy
 
 ## Disclaimer
 This program is intended strictly for educational and research purposes. Any use of StealNSend for unauthorized access, malicious activities, or data theft is strictly prohibited. The author assumes **no** responsability for misuse of this program.
-
-**This project is currently under development.**

